@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>512</string>
+	<key>AMApplicationVersion</key>
+	<string>2.10</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>AppleScriptを実行</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on run {input, parameters}	set currentApp to getCurrentApp()		set theURL to input as string	set bookmarkFolder to 0	tell application "Brave Browser"		tell window 1			set newTab to make new tab with properties {URL:theURL}		end tell				if currentApp is "Spark" then			tell application "Spark"				activate			end tell		end if				delay 0.1		repeat until (loading of newTab is false)		end repeat		set theTitle to the title of newTab		tell its bookmark folder bookmarkFolder			set theResult to make new bookmark item with properties {URL:theURL}			set title of theResult to theTitle			display notification theURL with title "Add to Brave" subtitle theTitle sound name "Breeze"		end tell		close newTab	end tellend runto getCurrentApp()	set front_app to (path to frontmost application as Unicode text)	set AppleScript's text item delimiters to ":"	set front_app to front_app's text items	set AppleScript's text item delimiters to {""} --&gt; restore delimiters to default value	set item_num to (count of front_app) - 1	set app_name to item item_num of front_app	set AppleScript's text item delimiters to "."	set app_name to app_name's text items	set AppleScript's text item delimiters to {""} --&gt; restore delimiters to default value	set MyApp to item 1 of app_name	return MyAppend getCurrentApp</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>7645E8D5-56CE-4E27-AB54-84DBAD3AB60F</string>
+				<key>Keywords</key>
+				<array>
+					<string>実行</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>16C91258-3CED-4204-ABFC-D3B7251138AF</string>
+				<key>UUID</key>
+				<string>C825FC7C-0E46-4D52-A3DC-70A3EFA9641C</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>510.000000:368.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>applicationBundleID</key>
+		<string>com.readdle.smartemail-Mac</string>
+		<key>applicationBundleIDsByPath</key>
+		<dict>
+			<key>/Applications/Spark.app</key>
+			<string>com.readdle.smartemail-Mac</string>
+		</dict>
+		<key>applicationPath</key>
+		<string>/Applications/Spark.app</string>
+		<key>applicationPaths</key>
+		<array>
+			<string>/Applications/Spark.app</string>
+		</array>
+		<key>backgroundColorName</key>
+		<string>blackColor</string>
+		<key>inputTypeIdentifier</key>
+		<string>com.apple.Automator.text.url</string>
+		<key>outputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>presentationMode</key>
+		<integer>11</integer>
+		<key>processesInput</key>
+		<true/>
+		<key>serviceApplicationBundleID</key>
+		<string>com.readdle.smartemail-Mac</string>
+		<key>serviceApplicationPath</key>
+		<string>/Applications/Spark.app</string>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.text.url</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceProcessesInput</key>
+		<true/>
+		<key>systemImageName</key>
+		<string>NSTouchBarShare</string>
+		<key>useAutomaticInputType</key>
+		<false/>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>
